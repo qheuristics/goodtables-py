@@ -82,3 +82,9 @@ target/
 tabulator
 jsontableschema
 datapackage
+
+# Eclipse Oxygen
+.settings
+
+# PyCharm
+.idea/

@@ -34,7 +34,11 @@ def table(source, schema=None, **options):
 
     # Add table
     if not warnings:
-        options.setdefault('headers', 1)
+        try:
+            sr = options['skip_rows']
+            options.setdefault('headers', 2)
+        except KeyError:
+            options.setdefault('headers', 1)
         tables.append({
             'source': str(source) if isinstance(source, six.string_types) else 'inline',
             'stream': Stream(source, **options),

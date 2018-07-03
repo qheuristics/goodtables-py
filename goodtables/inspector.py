@@ -48,6 +48,7 @@ class Inspector(object):
         self.__table_limit = parse_limit(table_limit)
         self.__row_limit = parse_limit(row_limit)
 
+
     def inspect(self, source, preset=None, **options):
         """https://github.com/frictionlessdata/goodtables-py#inspector
         """
