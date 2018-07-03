@@ -12,9 +12,10 @@ from .. import exceptions
 # Module API
 
 @preset('nested')
-def nested(source, presets):
+def nested(source, **options):
     warnings = []
     tables = []
+    presets = options.pop('presets')
 
     # Add warnings, tables
     source = deepcopy(source)
@@ -29,6 +30,7 @@ def nested(source, presets):
         except KeyError:
             message = 'Preset "%s" is not registered' % preset
             raise exceptions.GoodtablesException(message)
+        item.update(options)
         item_warnings, item_tables = preset_func(**item)
         if checks:
             for item_table in item_tables:
